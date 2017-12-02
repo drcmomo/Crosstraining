@@ -1,0 +1,52 @@
+﻿<section id="dashboard-view" class="mainbar" data-ng-controller="dashboard as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="widget wviolet">
+                        <div data-cc-widget-header title="Utilisateurs" allow-collapse="true">
+                           
+                        </div>
+                        <div class="widget-content text-center text-info">
+                            <ul class="fa-ul">
+                                <li><p><a href="#/add" class="btn btn-primary">Add New User</a></p></li>
+                                <li><b>Rechercher un utilisateur par son nom </b> <input type="text" ng-model="name" /></li>
+                            </ul>
+                            
+                            <strong class="success">{{Modifymessage}}</strong>
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Age</th>
+                                        <th>Mail</th>
+                                        <th>Edit/Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="p in vm.people | filter:name">
+                                        <td><strong data-ng-hide="p.editMode">{{p.nom}}</strong> <input data-ng-show="p.editMode" type="text" ng-model="p.nom" style="width:125px" /></td>
+                                        <td><strong data-ng-hide="p.editMode">{{p.prenom}} </strong><input data-ng-show="p.editMode" type="text" ng-model="p.prenom" style="width:125px" /></td>
+                                        <td><strong data-ng-hide="p.editMode">{{p.age}}</strong> <input data-ng-show="p.editMode" type="text" ng-model="p.age" style="width:35px"/></td>
+                                        <td><strong data-ng-hide="p.editMode">{{p.mail}} </strong> <input data-ng-show="p.editMode" type="text" ng-model="p.mail" style="width:125px" /></td>
+                                        <td><input type="button" ng-click="edituser(p)" class="btn btn-primary" value="Edit" data-ng-hide="p.editMode" /> 
+                                            <input type="button" ng-click="delete($index)" class="btn btn-primary" value="Delete" data-ng-hide="p.editMode" />
+                                            <input type="button" ng-click="modifyuser(p)" class="btn btn-primary" value="Save" data-ng-show="p.editMode" />
+                                            <input type="button" ng-click="cancel(p)" class="btn btn-primary" value="Cancel" data-ng-show="p.editMode" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</section>

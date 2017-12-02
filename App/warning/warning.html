@@ -1,0 +1,129 @@
+﻿<section class="mainbar" data-ng-controller="warning as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wviolet col-lg-8">
+                    <div data-cc-widget-header title="{{vm.title}}" allow-collapse="true"></div>
+                    <div class="widget-content warning">
+                        <p><a data-ng-click="showwarning()" href="javascript:;" class="btn btn-primary">Ajouter une séance Warning Up</a></p>
+                        <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close bgreen" data-dismiss="modal" aria-hidden="true">X</button>
+                                        <h4 class="modal-title bblue" id="myModalLabel" ng-hide="editMode">Ajouter </h4>
+                                        <h4 class="modal-title bblue" id="myModalLabel" ng-show="editMode">Modifier</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" role="form" name="addwarningform">
+
+
+                                            <div class="form-group left">
+
+                                                <label for="title" class="col-sm-5 control-label">Titre</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="warningup.Titre" class="form-control" id="title" placeholder="Titre" required title="Entrer un titre" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Rounds</label>
+                                                <div class="col-sm-10">
+                                                    <select ng-model="roundsId" ng-change="selectRound((vm.rounds|filter:{id:roundsId}))">
+                                                        <option value="">-- Choose Round --</option>
+                                                        <option ng-repeat="round in vm.rounds" value="{{round.id}}">{{round.nom}} </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Teams</label>
+                                                <div class="col-sm-10">
+                                                    <select ng-model="teamsId" ng-change="selectTeam((vm.teams|filter:{id:teamsId}))">
+                                                        <option value="">-- Choose Teams --</option>
+                                                        <option ng-repeat="team in vm.teams" value="{{team.id}}">{{team.nom}} </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Exercice1</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="warningup.Exercice1" class="form-control" id="title" placeholder="Exercice 1" required title="Entrer l'exercice 1" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Exercice2</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="warningup.Exercice2" class="form-control" id="title" placeholder="Exercice 2" required title="Entrer l'exercice 2" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Exercice3</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="warningup.Exercice3" class="form-control" id="title" placeholder="Exercice 3" required title="Entrer l'exercice 3" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Exercice4</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="warningup.Exercice4" class="form-control" id="title" placeholder="Exercice 4" required title="Entrer l'exercice 1" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <span data-ng-hide="editMode">
+                                                        <input type="submit" value="Ajouter" data-ng-click="savewarning()" class="btn btn-primary" />
+                                                    </span>
+                                                    <span data-ng-show="editMode">
+                                                        <input type="submit" value="Modifier" data-ng-click="update(warningup)" class="btn btn-primary" />
+                                                    </span>
+                                                    <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <strong class="success center-block green">{{messagesaveWarming}}</strong>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Teams</th>
+                                    <th>Rounds</th>
+                                    <th>Titre</th>
+                                    <th>Date</th>
+                                    <th>Exercice1</th>
+                                    <th>Exercice2</th>
+                                    <th>Exercice3</th>
+                                    <th>Exercice4</th>
+                                    <th>Modifier/Supprimer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="w in vm.warmingdetails">
+                                    <td><strong>{{w.TeamNom}} </strong></td>
+                                    <td><strong>{{w.RoundNom}}</strong> </td>
+                                    <td><strong>{{w.Titre}}</strong> </td>
+                                    
+                                    <td><strong>{{w.Date}} </strong> </td>
+
+                                    <td><strong>{{w.Exercice1}}</strong> </td>
+                                    <td><strong>{{w.Exercice2}} </strong></td>
+                                    <td><strong>{{w.Exercice3}}</strong> </td>
+                                    <td><strong>{{w.Exercice4}} </strong> </td>
+                                    <td>
+                                        <input type="button" ng-click="showeditWarming(w)" class="btn btn-primary" value="Edit" />
+                                        <input type="button" ng-click="deleteWarming($index)" class="btn btn-primary" value="Delete" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+</section>

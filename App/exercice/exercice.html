@@ -1,0 +1,106 @@
+﻿<section class="mainbar" data-ng-controller="exercice as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wviolet col-lg-8">
+                    <div data-cc-widget-header title="{{vm.title}}" allow-collapse="true"></div>
+	                <div class="widget-content exercice">
+
+		                <div class="modal fade" id="exerciceModel" tabindex="-1" role="dialog" aria-hidden="true">
+			                <div class="modal-dialog">
+				                <div class="modal-content">
+					                <div class="modal-header">
+						                <button type="button" class="close bgreen" data-dismiss="modal" aria-hidden="true">X</button>
+						                <h4 class="modal-title bblue" id="myModalLabel" ng-hide="editMode">Ajouter </h4>
+						                <h4 class="modal-title bblue" id="myModalLabel" ng-show="editMode">Modifier</h4>
+					                </div>
+					                <div class="modal-body">
+						                <form class="form-horizontal" role="form" name="addexerciceform">
+
+
+							                <div class="form-group left">
+
+								                <label for="title" class="col-sm-5 control-label">Nom :</label>
+								                <div class="col-sm-10">
+									                <input type="text" data-ng-model="exercice.NomExercices" class="form-control" id="title" placeholder="Nom :" required title="Entrer le nom de l'exercice"/>
+								                </div>
+							                </div>
+
+
+							                <div class="form-group">
+								                <div class="col-sm-offset-2 col-sm-10">
+									                <span data-ng-hide="editMode">
+                                                        <input type="submit" value="Enregistrer" data-ng-click="addexercice()" class="btn btn-primary" />
+                                                    </span>
+									                <span data-ng-show="editMode">
+                                                        <input type="submit" value="Modifier" data-ng-click="updateexercice(exercice)" class="btn btn-primary" />
+                                                    </span>
+									                <input type="button" value="Annuler" data-ng-click="cancelexercice()" class="btn btn-primary"/>
+								                </div>
+							                </div>
+						                </form>
+					                </div>
+				                </div>
+			                </div>
+		                </div>
+                      
+		                <strong class="success center-block green">{{message}}</strong>
+		                <table class="table table-hover">
+			                <thead>
+			                <tr>
+				                <th>Id</th>
+				                <th>Nom</th>
+				                <th>Modifier/Supprimer</th>
+			                </tr>
+			                </thead>
+			                <tbody>
+			                <tr ng-repeat="e in vm.exercice">
+				                <td><strong>{{e.ExercicesId}}</strong> </td>
+				                <td><strong>{{e.NomExercices}} </strong></td>
+				                <td>
+					                <input type="button" ng-click="showeditexercice(e)" class="btn btn-primary" value="Modifier"/>
+					                <input type="button" ng-click="deleteexercice($index)" class="btn btn-primary" value="Supprimer"/>
+				                </td>
+			                </tr>
+			                </tbody>
+		                </table>
+                         <pagination page="pagingInfo.page"
+                        total-items="pagingInfo.totalItems"
+                        items-per-page="pagingInfo.itemsPerPage"
+                        on-select-page="selectPage(page)"
+                        max-size="10"
+                        rotate="false"
+                        boundary-links="true"></pagination>
+	                </div>
+                      </div>
+                        <div class="col-md-4">
+                            <div class="widget wgreen">
+                                <div data-cc-widget-header title="{{vm.news.title}}"
+                                    allow-collapse="true">
+                                </div>
+                                <div class="widget-content text-right text-info">
+                                    <strong class="success">{{message}}</strong>
+                                    <table class="table table-condensed table-striped">
+
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>
+                                                <input type="text" ng-model="exercice.NomExercices" /></th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">
+                                                <button class="btn btn-primary" type="submit" data-ng-click="addexercice()">Enregistrer</button>
+                                                <button class="btn btn-primary" type="reset">Annuler</button></th>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                                <div class="widget-foot">
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+</section>

@@ -1,0 +1,114 @@
+﻿
+<section id="home-view" class="mainbar" data-ng-controller="wods as vm">
+    <div style="margin-left: 10%; margin-right: 10%;">
+        <div class="col-md-4">
+            <div class="widget wviolet">
+                <div data-cc-widget-header title="Wods"
+                     allow-collapse="true">
+                </div>
+                <div class="widget-content text-right text-info">
+                    <strong class="success">{{messagesavewodsup}}</strong>
+	                <table class="table table-condensed table-striped">
+		                 <tr>
+		                    <th>Titre</th>
+		                    <th>
+			                    <input type="text" ng-model="wodsup.titre"/>
+		                    </th>
+	                    </tr>
+		                <tr>
+			                <th>Durée</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.temps"/>
+			                </th>
+		                </tr>
+
+		                <tr>
+			                <th>Rounds</th>
+			                <th>
+				                <select ng-model="roundsId" ng-change="selectRound((vm.rounds|filter:{id:roundsId}))">
+					                <option value="">-- Choose Round --</option>
+					                <option ng-repeat="round in vm.rounds" value="{{round.id}}">{{round.nom}} </option>
+				                </select>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Teams</th>
+
+			                <th>
+				                <select ng-model="teamsId" ng-change="selectTeam((vm.teams|filter:{id:teamsId}))">
+					                <option value="">-- Choose Teams --</option>
+					                <option ng-repeat="team in vm.teams" value="{{team.id}}">{{team.nom}} </option>
+				                </select>
+			                </th>
+		                </tr>
+
+
+		                <tr>
+			                <th>Exercice 1</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.exercice1"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 2</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.exercice2"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 3</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.exercice3"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 4</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.exercice4"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 5</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.exercice5"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 6</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.exercice6"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 7</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.exercice7"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 8</th>
+			                <th>
+				                <input type="text" ng-model="wodsup.exercice8"/>
+			                </th>
+		                </tr>
+
+		                <tr>
+			                <th colspan="2">
+				                <button class="btn btn-primary" type="submit" data-ng-click="savewod()">Enregistrer</button>
+				                <button class="btn btn-primary" type="reset">Annuler</button>
+			                </th>
+		                </tr>
+
+	                </table>
+                </div>
+                <div class="widget-foot">
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+</section>
+     
+
+

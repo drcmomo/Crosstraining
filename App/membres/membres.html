@@ -1,0 +1,109 @@
+﻿<section class="mainbar" data-ng-controller="membres as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wviolet col-lg-8">
+                    <div data-cc-widget-header title="{{vm.title}}" allow-collapse="true"></div>
+                    <div class="widget-content user">
+
+                        <div class="modal fade" id="userModel" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close bgreen" data-dismiss="modal" aria-hidden="true">X</button>
+                                        <h4 class="modal-title bblue" id="myModalLabel" ng-hide="editMode">Add </h4>
+                                        <h4 class="modal-title bblue" id="myModalLabel" ng-show="editMode">Modifier</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" role="form" name="adduserform">
+
+
+                                            <div class="form-group left">
+
+                                                <label for="title" class="col-sm-5 control-label">Nom</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="user.Nom" class="form-control" id="nom" placeholder="Votre nom" required title="Enter votre nom" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Prénom</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="user.Prenom" class="form-control" id="prenom" placeholder="Votre prénom" required title="Entrer votre prénom" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Age</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="user.Age" class="form-control" id="age" placeholder="Age" required title="Entrer votre âge" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Mail</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="user.Mail" class="form-control" id="mail" placeholder="Votre mail" required title="Entrer votre mail" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-6 control-label">Active</label>
+                                                <div class="col-sm-6">
+                                                    <input type="checkbox" data-ng-model="user.IsActive" class="form-control" id="actif" placeholder="Active" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <span data-ng-hide="editMode">
+                                                        <input type="submit" value="Add" data-ng-click="add()" class="btn btn-primary" />
+                                                    </span>
+                                                    <span data-ng-show="editMode">
+                                                        <input type="submit" value="Modifier" data-ng-click="modifyuser(user)" class="btn btn-primary" />
+                                                    </span>
+                                                    <input type="button" value="Annuler" data-ng-click="cancel()" class="btn btn-primary" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <strong class="success center-block green">{{Modifymessage}}</strong>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Age</th>
+                                    <th>Mail</th>
+                                    <th>Actif</th>
+                                    <th>Edit/Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="p in vm.people | filter:name">
+
+                                    <td><strong>{{p.Nom}}</strong> </td>
+                                    <td><strong>{{p.Prenom}} </strong></td>
+                                    <td><strong>{{p.Age}}</strong> </td>
+                                    <td><strong>{{p.Mail}} </strong> </td>
+                                    <td><input type="checkbox" ng-model="p.IsActive"></td>
+                                    <td>
+                                        <input type="button" ng-click="showedit(p)" class="btn btn-primary" value="Modifier" />
+                                        <input type="button" ng-click="delete($index)" class="btn btn-primary" value="Supprimer" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination page="pagingInfo.page"
+                                    total-items="pagingInfo.totalItems"
+                                    items-per-page="pagingInfo.itemsPerPage"
+                                    on-select-page="selectPage(page)"
+                                    max-size="10"
+                                    rotate="false"
+                                    boundary-links="true"></pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

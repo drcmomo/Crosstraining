@@ -1,0 +1,29 @@
+﻿<section class="mainbar" data-ng-controller="logon as vm">
+	<div class="col-md-6">
+		<div class="widget worange">
+			<div data-cc-widget-header title="Se connecter" allow-collapse="true">
+
+			</div>
+
+			<div class="widget-content text-center text-info">
+				<strong class="success">{{message}}</strong>
+				<table class="table table-condensed table-striped">
+
+					<tr>
+						<th>Login</th>
+						<th><input type="text" ng-model="user.Login" required="required"/></th>
+					</tr>
+					<tr>
+						<th>Mot de passe</th>
+						<th><input type="password" ng-model="user.Password" required="required"/></th>
+					</tr>
+					<tr>
+						<th colspan="2"><button class="btn btn-primary" type="submit" data-ng-click="Login()">Connexion</button><button class="btn btn-primary" type="reset">Annuler</button></th>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+	</div>
+</section> 
+

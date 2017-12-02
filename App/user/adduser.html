@@ -1,0 +1,51 @@
+﻿<section id="dashboard-view" class="mainbar">
+    <div class="col-md-4">
+        <div class="widget worange">
+            <div data-cc-widget-header title="S'inscrire" allow-collapse="true">
+
+            </div>
+            <div class="widget-content text-center text-info">
+                <strong class="success">{{message}}</strong>
+                <table class="table table-condensed table-striped">
+
+                    <tr>
+                        <th>Nom :</th>
+                        <th><input type="text" ng-model="user.nom" required="required"/></th>
+                    </tr>
+                    <tr>
+                        <th>Prenom :</th>
+                        <th><input type="text" ng-model="user.prenom" required="required" /></th>
+                    </tr>
+                    <tr>
+                        <th>Age :</th>
+                        <th><input type="text" ng-model="user.age" required="required"/></th>
+                    </tr>
+                    <tr>
+                        <th>Login :</th>
+                        <th><input type="text" ng-model="user.login" required="required"/></th>
+                    </tr>
+
+                    <tr>
+                        <th>Mot de passe :</th>
+                        <th><input type="text" ng-model="user.password" required="required"/></th>
+                    </tr>
+
+                    <tr>
+                        <th>Mail :</th>
+                        <th><input type="email" ng-model="user.mail" required="required"/></th>
+                    </tr>
+
+                    <tr>
+                        <th>Photo :</th>
+                        <th><input type="text" ng-model="user.photo" /></th>
+                    </tr>
+                    <tr>
+                        <th colspan="2"><button class="btn btn-primary" type="submit" data-ng-click="save()">Enregistrer</button><button class="btn btn-primary" type="reset">Annuler</button></th>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        </div>
+</section>
+

@@ -1,0 +1,266 @@
+﻿
+<section class="mainbar" data-ng-controller="skills as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wviolet col-lg-8">
+                    <div data-cc-widget-header title="{{vm.title}}" allow-collapse="true"></div>
+                    <div class="widget-content skills">
+                        <p><a data-ng-click="showwskill()" href="javascript:;" class="btn btn-primary">Ajouter une séance de Skill</a></p>
+                        <div class="modal fade" id="skillModal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close bgreen" data-dismiss="modal" aria-hidden="true">X</button>
+                                        <h4 class="modal-title bblue" id="myModalLabel" ng-hide="editMode">Ajouter </h4>
+                                        <h4 class="modal-title bblue" id="myModalLabel" ng-show="editMode">Modifier</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" role="form" name="addskillform">
+
+
+                                            <div class="form-group left">
+
+                                                <label for="title" class="col-sm-5 control-label">Titre</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="skillsup.Titre" class="form-control" id="title" placeholder="Titre" required title="Entrer un titre" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Rounds</label>
+                                                <div class="col-sm-10">
+                                                    <select ng-model="selectedOptionround" ng-change="selectRound()">
+                                                        <option value="">-- Choose Round --</option>
+                                                        <option ng-repeat="round in vm.rounds" value="{{round.id}}">{{round.nom}} </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Teams</label>
+                                                <div class="col-sm-10">
+                                                    <select ng-model="selectedOptionteam" ng-change="selectTeam()">
+                                                        <option value="">-- Choose Teams --</option>
+                                                        <option ng-repeat="team in vm.teams" value="{{team.id}}">{{team.nom}} </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Exercice1</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="skillsup.Exercice1" class="form-control" id="title" placeholder="Exercice 1" required title="Entrer l'exercice 1" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Exercice2</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="skillsup.Exercice2" class="form-control" id="title" placeholder="Exercice 2" required title="Entrer l'exercice 2" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Exercice3</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="skillsup.Exercice3" class="form-control" id="title" placeholder="Exercice 3" required title="Entrer l'exercice 3" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="title" class="col-sm-10 control-label">Exercice4</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" data-ng-model="skillsup.Exercice4" class="form-control" id="title" placeholder="Exercice 4" required title="Entrer l'exercice 1" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <span data-ng-hide="editMode">
+                                                        <input type="submit" value="Ajouter" data-ng-click="saveskill()" class="btn btn-primary" />
+                                                    </span>
+                                                    <span data-ng-show="editMode">
+                                                        <input type="submit" value="Modifier" data-ng-click="updateskill(skillsup)" class="btn btn-primary" />
+                                                    </span>
+                                                    <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <strong class="success center-block green">{{messagesaveskill}}</strong>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Teams</th>
+                                    <th>Rounds</th>
+                                    <th>Titre</th>
+                                    <th>Date</th>
+                                    <th>Exercice1</th>
+                                    <th>Exercice2</th>
+                                    <th>Exercice3</th>
+                                    <th>Exercice4</th>
+                                    <th>Modifier/Supprimer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="s in vm.skilldetails">
+                                    <td><strong>{{s.TeamNom}} </strong></td>
+                                    <td><strong>{{s.RoundNom}}</strong> </td>
+                                    <td><strong>{{s.Titre}}</strong> </td>
+                                    <td><strong>{{s.Date}} </strong> </td>
+                                    <td><strong>{{s.Exercice1}}</strong> </td>
+                                    <td><strong>{{s.Exercice2}} </strong></td>
+                                    <td><strong>{{s.Exercice3}}</strong> </td>
+                                    <td><strong>{{s.Exercice4}} </strong> </td>
+                                    <td>
+                                        <input type="button" ng-click="showeditskill(s)" class="btn btn-primary" value="Edit" />
+                                        <input type="button" ng-click="deleteskill($index)" class="btn btn-primary" value="Delete" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="home-view" class="mainbar" data-ng-controller="skills as vm">
+    <div style="margin-left: 10%; margin-right: 10%;">
+        <div class="col-md-4">
+            <div class="widget wgreen">
+                <div data-cc-widget-header title="Skills"
+                     allow-collapse="true">
+                </div>
+                <div class="widget-content text-right text-info">
+                    <strong class="success">{{messagesaveskills}}</strong>
+	                <table class="table table-condensed table-striped">
+
+                          <tr>
+		                    <th>Titre</th>
+		                    <th>
+			                    <input type="text" ng-model="skillsup.titre"/>
+		                    </th>
+	                    </tr>
+                         <tr>
+                            <th>Rounds</th>
+		                    <th>
+                                <select ng-model="roundsId" ng-change="selectRound((vm.rounds|filter:{id:roundsId}))">
+			                          <option value="">-- Choose Round --</option>
+			                        <option ng-repeat="round in vm.rounds"  value="{{round.id}}">{{round.nom}} </option>
+		                        </select>
+		                    </th>
+                        </tr>
+                        <tr>
+	                        <th>Teams</th>
+
+	                        <th>
+		                        <select ng-model="teamsId" ng-change="selectTeam((vm.teams|filter:{id:teamsId}))">
+			                          <option value="">-- Choose Teams --</option>
+			                        <option ng-repeat="team in vm.teams"  value="{{team.id}}">{{team.nom}} </option>
+		                        </select>
+                            </th>
+                        </tr>
+		                <tr>
+			                <th>Exercice 1</th>
+			                <th>
+				                <input type="text" ng-model="skillsup.exercice1"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 2</th>
+			                <th>
+				                <input type="text" ng-model="skillsup.exercice2"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 3</th>
+			                <th>
+				                <input type="text" ng-model="skillsup.exercice3"/>
+			                </th>
+		                </tr>
+		                <tr>
+			                <th>Exercice 4</th>
+			                <th>
+				                <input type="text" ng-model="skillsup.exercice4"/>
+			                </th>
+		                </tr>
+
+		                <tr>
+			                <th colspan="2">
+				                <button class="btn btn-primary" type="submit" data-ng-click="saveskill()">Enregistrer</button>
+				                <button class="btn btn-primary" type="reset">Annuler</button>
+			                </th>
+		                </tr>
+
+	                </table>
+                </div>
+                <div class="widget-foot">
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+     
+
+
+

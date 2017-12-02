@@ -1,0 +1,15 @@
+﻿<div data-cc-sidebar data-ng-controller="logon as vm">
+    <div class="sidebar-filler"></div>
+    <div class="sidebar-dropdown"><a href="#">Menu</a></div>
+    <div class="sidebar-inner">
+	    <div class="sidebar-widget">
+		   
+	    </div>
+        <ul class="navi" data-ng-repeat="r in vm.navRoutes">
+	        <li ng-if="r.config.settings.content !== '' && r.config.settings.isAdmin == true" class="nlightblue fade-selection-animation" data-ng-class="vm.isCurrent(r)"> 
+		         <a href="#{{r.url}}"   data-ng-bind-html="r.config.settings.content"></a>
+	        </li>
+        </ul>
+
+    </div>
+</div>

@@ -1,0 +1,151 @@
+﻿
+<section id="home-view" class="mainbar" data-ng-controller="acceuil as vm">
+    <div style="margin-left: 10%; margin-right: 10%;">
+
+        <div id="carousel-example" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="carousel-content">
+                                <div>
+                                    <h3>Création de compte</h3>
+                                    <p>Pour créer un compte . Il faut cliquer sur le bouton 's'isncrire'</p>
+                                    <p> les zones de saisies en rouge sont obligatoire. </p>
+                                    <p> Le compte sera activer par l'administrateur ou le coach. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="carousel-content">
+                                <div>
+                                    <h3>Types d'utilisateurs</h3>
+                                    <p>Il y a deux types d'utilisateurs:  </p>
+                                    <p>  - L'administrateur  </p>
+                                    <p>   - Membres  </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="carousel-content">
+                                <div>
+                                    <h3>Administrateur</h3>
+                                    <p>
+                                        L'administrateur peut modifier le compte d'un membre.
+                                    </p>
+                                    <p> - Activer/désactiver/supprimer un compte</p>
+                                    <p>  - Ajouter ou créer le programme du jour</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="carousel-content">
+                                <div>
+                                    <h3>Membres</h3>
+                                    <p>
+                                        Les membres une fois le compte sera activer peuvenet :
+                                    </p>
+                                    <p>   - Visualiser la liste des programmes ou activités en cours ou antérieur.  </p>
+                                    <p>   - A la fin de l'activité du jour saisie le temps de réalisation du WOD.  </p>
+                                    <p>   -Visualiser sa progression au niveau certains exercices(Deadlift,Overhead Squat...) </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="carousel-content">
+                                <div>
+                                    <h3>Programmes du jour</h3>
+                                    <p>
+                                        Pour créer le programme du jours il faut(reservé aux autilisateur de profil admin) :
+                                    </p>
+                                    <p>   -1) Saisi les exercices  d'échauffement(4 au maximum). Onglet wanup </p>
+                                    <p>   -2) Saisi les exercices  d'apprentissage techniques(4 au maximum). Onglet Skills  </p>
+                                    <p>   -3) Saisi les du wod (8 au maximum). Onglet  wod</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Controls --> <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+
+        </div>
+
+
+
+
+        <div>
+            <carousel interval="myInterval">
+                <slide ng-repeat="slide in vm.images" active="slide.active">
+                    <img ng-src="{{slide.image}}" style="margin:auto;">
+                    <div class="carousel-caption">
+                        <h4>Slide {{$index+1}}</h4>
+                    </div>
+                </slide>
+            </carousel>
+        </div>
+
+
+
+        <div class="slider">
+            <div class="slide" ng-repeat="image in vm.images">
+                <img data-ng-src="{{slide.image}}" style="margin:auto;">
+            </div>
+            <div class="arrows">
+                <a href="#" ng-click="prev()">
+                    
+                </a>
+                <a href="#" ng-click="next()">
+                  
+                </a>
+            </div>
+        </div>
+
+        <div class="btn-group btn-group-justified" style="margin-left: 2%; margin-right: 2%;">
+            <div class="panel panel-primary" style="width: 30%; height: 240px; margin-top: 3%; margin-right: 20px; float: left;">
+                <div class="panel-heading">
+                    <h3 class="panel-title">warming up</h3>
+                </div>
+                <div class="panel-body">
+                    Comme pour toute discipline sportive, le Crossfit exige un échauffement précis et parfaitement exécuté des muscles et des articulations et ce avant chaque séance d’entraînement. 
+                    Cette série de mouvements, plus ou moins complexes, vise à prévenir toutes blessures qui pourraient survenir lors de la séance de WODs proprement dite. 
+                </div>
+            </div>
+
+            <div class="panel panel-primary" style="width: 30%; height: 150px; margin-top: 3%; margin-right: 20px; float: left;">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Skills(compétences)</h3>
+                </div>
+                <div class="panel-body">
+                    L'apprentissage des techniques d'entraînements.
+                </div>
+            </div>
+            <div class="panel panel-primary" style="width: 30%; height: 210px; margin-top: 3%; float: left;">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Wod(WorkOut of the Day)</h3>
+                </div>
+                <div class="panel-body">
+                    L'entraînement CrossFit s'articule autour des WOD (WorkOut of the Day) : chaque jour un WO (WorkOut) est choisi puis exécuté après une séance d'échauffement. 
+                    Les WODs sont composés d'un ou plusieurs exercices, le tout enchaîné suivant différents formats..
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+     
+
+
